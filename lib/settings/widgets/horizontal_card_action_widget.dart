@@ -1,8 +1,9 @@
-import 'package:cards/settings/cards_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class HorizontalCardAction extends StatelessWidget implements CardAction {
+import 'card_action.dart';
+
+class HorizontalCardActionWidget extends StatelessWidget implements CardAction {
   final Color background;
   final IconData leadIcon;
   final String title;
@@ -10,7 +11,7 @@ class HorizontalCardAction extends StatelessWidget implements CardAction {
   final IconData tailIcon;
   final VoidCallback onPressed;
 
-  const HorizontalCardAction(
+  const HorizontalCardActionWidget(
       {Key key,
       this.background,
       this.leadIcon,

@@ -1,26 +1,27 @@
-import 'package:cards/settings/cards_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CheckableCardAction extends StatefulWidget implements CardAction {
+import 'card_action.dart';
+
+class CardPreferenceWidget extends StatefulWidget {
   final Color background;
   final IconData leadIcon;
   final String title;
   final String subtitle;
   final ValueSetter<bool> onChanged;
 
-  const CheckableCardAction(
+  const CardPreferenceWidget(
       {Key key, this.background, this.leadIcon, this.title, this.subtitle, this.onChanged})
       : super(key: key);
 
   @override
-  _CheckableCardActionState createState() => _CheckableCardActionState();
+  _CardPreferenceState createState() => _CardPreferenceState();
 
   @override
   ActionType get type => ActionType.CHECKABLE;
 }
 
-class _CheckableCardActionState extends State<CheckableCardAction> {
+class _CardPreferenceState extends State<CardPreferenceWidget> {
   bool _isChecked = false;
 
   @override

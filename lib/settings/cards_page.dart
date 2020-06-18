@@ -1,6 +1,7 @@
-import 'package:cards/settings/widgets/card_widget.dart';
-import 'package:cards/settings/widgets/checkable_card_action.dart';
-import 'package:cards/settings/widgets/horizontal_card_action.dart';
+import 'package:cards/settings/widgets/card_item_widget.dart';
+import 'package:cards/settings/widgets/card_preference_widget.dart';
+import 'package:cards/settings/widgets/horizontal_card_action_widget.dart';
+import 'package:cards/settings/widgets/round_card_action_widget.dart';
 import 'package:flutter/material.dart';
 
 class CardsPage extends StatefulWidget {
@@ -53,6 +54,7 @@ class _CardsPageState extends State<CardsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
+                    elevation: 4.0,
                     margin: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -70,46 +72,46 @@ class _CardsPageState extends State<CardsPage> {
     ]);
   }
 
-  List<CardWidget> _cardsList() => [
-        CardWidget(bgColor: Colors.red),
-        CardWidget(bgColor: Colors.yellow),
-        CardWidget(bgColor: Colors.green),
+  List<CardItemWidget> _cardsList() => [
+        CardItemWidget(bgColor: Colors.red),
+        CardItemWidget(bgColor: Colors.yellow),
+        CardItemWidget(bgColor: Colors.green),
       ];
 
   List<Widget> _cardActions() => [
-        HorizontalCardAction(
+        HorizontalCardActionWidget(
             background: Colors.red,
             leadIcon: Icons.image,
             title: "",
             subtitle: "",
             tailIcon: Icons.chevron_right,
             onPressed: () {}),
-        CheckableCardAction(
+        CardPreferenceWidget(
             background: Colors.yellow,
             leadIcon: Icons.image,
             title: "",
             subtitle: "",
             onChanged: (value) {}),
-        CheckableCardAction(
+        CardPreferenceWidget(
             background: Colors.yellow,
             leadIcon: Icons.image,
             title: "",
             subtitle: "",
             onChanged: (value) {}),
-        CheckableCardAction(
+        CardPreferenceWidget(
             background: Colors.yellow,
             leadIcon: Icons.image,
             title: "",
             subtitle: "",
             onChanged: (value) {}),
-        HorizontalCardAction(
+        HorizontalCardActionWidget(
             background: Colors.green,
             leadIcon: Icons.image,
             title: "",
             subtitle: "",
             tailIcon: Icons.chevron_right,
             onPressed: () {}),
-        HorizontalCardAction(
+        HorizontalCardActionWidget(
             background: Colors.orange,
             leadIcon: Icons.image,
             title: "",
@@ -120,55 +122,9 @@ class _CardsPageState extends State<CardsPage> {
 
   List<Widget> _roundCardActions() {
     return [
-      RoundCardAction(title: "Lock", icon: Icons.lock),
-      RoundCardAction(title: "Card Details", icon: Icons.remove_red_eye),
-      RoundCardAction(title: "Reset PIN", icon: Icons.credit_card),
+      RoundCardActionWidget(title: "Lock", icon: Icons.lock),
+      RoundCardActionWidget(title: "Card Details", icon: Icons.remove_red_eye),
+      RoundCardActionWidget(title: "Reset PIN", icon: Icons.credit_card),
     ];
   }
 }
-
-class RoundCardAction extends StatelessWidget implements CardAction {
-  final String title;
-  final IconData icon;
-
-  const RoundCardAction({Key key, this.title, this.icon}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RawMaterialButton(
-          onPressed: () {},
-          elevation: 0.0,
-          fillColor: Colors.greenAccent,
-          child: Icon(icon, size: 24.0),
-          padding: EdgeInsets.all(20.0),
-          shape: CircleBorder(),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.subtitle1,
-          ),
-        )
-      ],
-    );
-  }
-
-  @override
-  String get subtitle => "";
-
-  @override
-  ActionType get type => ActionType.ROUND;
-}
-
-class CardAction {
-  final ActionType type;
-  final String title;
-  final String subtitle;
-
-  CardAction(this.type, this.title, {this.subtitle});
-}
-
-enum ActionType { ROUND, HORIZONTAL, CHECKABLE }
