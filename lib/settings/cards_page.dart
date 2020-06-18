@@ -58,7 +58,10 @@ class _CardsPageState extends State<CardsPage> {
                     margin: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
+                      child: ListView.separated(
+                          separatorBuilder: (context, index) {
+                            return Divider(height: 1.0);
+                          },
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: _cardActions().length,
@@ -75,47 +78,31 @@ class _CardsPageState extends State<CardsPage> {
   List<CardItemWidget> _cardsList() => [
         CardItemWidget(bgColor: Colors.red),
         CardItemWidget(bgColor: Colors.yellow),
-        CardItemWidget(bgColor: Colors.green),
+        CardItemWidget(bgColor: Colors.green)
       ];
 
   List<Widget> _cardActions() => [
         HorizontalCardActionWidget(
-            background: Colors.red,
             leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
+            title: "Open in Google Pay",
+            subtitle: "Manage this card in your Google Pay wallet",
             tailIcon: Icons.chevron_right,
             onPressed: () {}),
+        CardPreferenceWidget(leadIcon: Icons.wifi, title: "Online Payments", onChanged: (value) {}),
         CardPreferenceWidget(
-            background: Colors.yellow,
-            leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
-            onChanged: (value) {}),
+            leadIcon: Icons.local_atm, title: "ATM Withdrawals", onChanged: (value) {}),
         CardPreferenceWidget(
-            background: Colors.yellow,
-            leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
-            onChanged: (value) {}),
-        CardPreferenceWidget(
-            background: Colors.yellow,
-            leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
-            onChanged: (value) {}),
+            leadIcon: Icons.image, title: "Paymentns Abroad", onChanged: (value) {}),
         HorizontalCardActionWidget(
-            background: Colors.green,
             leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
+            title: "Daily Limits",
+            subtitle: "Set your card payment limits",
             tailIcon: Icons.chevron_right,
             onPressed: () {}),
         HorizontalCardActionWidget(
-            background: Colors.orange,
             leadIcon: Icons.image,
-            title: "",
-            subtitle: "",
+            title: "Reorder Card",
+            subtitle: "Get a new card in case you have it lost or stolen",
             tailIcon: Icons.chevron_right,
             onPressed: () {})
       ];

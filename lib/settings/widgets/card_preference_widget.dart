@@ -31,27 +31,36 @@ class _CardPreferenceState extends State<CardPreferenceWidget> {
       padding: EdgeInsets.all(8.0),
       color: widget.background,
       child: Row(children: [
-        Icon(widget.leadIcon),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(widget.leadIcon),
+        ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(widget.title, style: Theme.of(context).textTheme.subtitle1),
-              Padding(padding: EdgeInsets.only(top: 4.0)),
-              Text(widget.subtitle, style: Theme.of(context).textTheme.subtitle2)
-            ]),
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0, bottom: 16.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(widget.title, style: Theme.of(context).textTheme.subtitle1),
+                  widget.subtitle != null
+                      ? Padding(
+                          padding: EdgeInsets.only(top: 4.0),
+                          child:
+                              Text(widget.subtitle, style: Theme.of(context).textTheme.subtitle2))
+                      : Container()
+                ]),
           ),
         ),
-        Icon(Icons.check)
-        /*Switch(
+        Switch(
+            activeColor: Colors.teal,
             value: _isChecked,
             onChanged: (checked) {
               setState(() {
                 _isChecked = !_isChecked;
                 widget.onChanged(checked);
               });
-            })*/
-        ,
+            })
       ]),
     );
   }

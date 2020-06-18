@@ -28,10 +28,13 @@ class HorizontalCardActionWidget extends StatelessWidget implements CardAction {
       padding: EdgeInsets.all(8.0),
       color: background,
       child: Row(children: [
-        Icon(leadIcon),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(leadIcon),
+        ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0, bottom: 16.0),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(title, style: Theme.of(context).textTheme.subtitle1),
               Padding(padding: EdgeInsets.only(top: 4.0)),

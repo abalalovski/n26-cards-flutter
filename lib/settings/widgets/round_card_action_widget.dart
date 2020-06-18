@@ -23,7 +23,7 @@ class RoundCardActionWidget extends StatelessWidget implements CardAction {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Text(
-            title,
+            "",
             style: Theme.of(context).textTheme.subtitle1,
           ),
         )
