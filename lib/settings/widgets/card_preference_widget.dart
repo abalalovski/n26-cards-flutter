@@ -28,12 +28,12 @@ class _CardPreferenceState extends State<CardPreferenceWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4.0),
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0, bottom: 12.0),
       color: widget.background,
       child: Row(children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Icon(widget.leadIcon),
+          child: Icon(widget.leadIcon, size: 32.0),
         ),
         Expanded(
           child: Padding(

@@ -23,27 +23,29 @@ class HorizontalCardActionWidget extends StatelessWidget implements CardAction {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 4.0),
-      padding: EdgeInsets.all(8.0),
-      color: background,
-      child: Row(children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(leadIcon),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0, bottom: 16.0),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(title, style: Theme.of(context).textTheme.subtitle1),
-              Padding(padding: EdgeInsets.only(top: 4.0)),
-              Text(subtitle, style: Theme.of(context).textTheme.subtitle2)
-            ]),
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        color: background,
+        child: Row(children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(leadIcon, size: 32.0),
           ),
-        ),
-        Icon(tailIcon),
-      ]),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0, bottom: 16.0),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(title, style: Theme.of(context).textTheme.subtitle1),
+                Padding(padding: EdgeInsets.only(top: 4.0)),
+                Text(subtitle, style: Theme.of(context).textTheme.subtitle2)
+              ]),
+            ),
+          ),
+          Icon(tailIcon),
+        ]),
+      ),
     );
   }
 
